@@ -3,7 +3,7 @@
 
 仿天眼查关系图，自定义view，随机颜色，随机大小,随机长度，欢迎star
 
-# 预览图
+## 预览图
 
 设计图
 ![avatar](https://github.com/chenhua1008611/Co-People/blob/master/CoPeople/images/1234.png)
