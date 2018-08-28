@@ -9,7 +9,7 @@
 ![avatar](https://github.com/chenhua1008611/Co-People/blob/master/CoPeople/images/1234.png)
 
 ## 绘制思路
-
+这里使用了中学解析几何知识   XPoint = OPointX = OPointX*cosθ； YPoint = OPointY = OPointY*sinθ；
 <pre class=”brush: java; gutter: true;”>                canvas.drawText(lists.get(i).getName(), XPoint + (float) Math.cos(pere * i + 5) * radius[i % radius.length] - 30, YPoint + (float) Math.sin(pere * i + 5) * radius[i % radius.length] + 35, paint);
 </pre>
 
@@ -25,9 +25,9 @@
     app:layout_constraintTop_toTopOf="parent" />
    
         
-2.  peopleView = findViewById(R.id.layout_cricle_people);
+ 2.  peopleView = findViewById(R.id.layout_cricle_people);
 
-3. 添加数据，刷新UI peopleView.SetFieldInfo(lists);
+ 3. 添加数据，刷新UI peopleView.SetFieldInfo(lists);
     peopleView.invalidate();
     ····
 
