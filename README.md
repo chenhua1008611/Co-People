@@ -29,5 +29,7 @@
 
  3. 添加数据，刷新UI peopleView.SetFieldInfo(lists);
     peopleView.invalidate();
-    ····
-
+    
+    
+## 后续功能
+添加手势控制（手势控制放大缩小），添加点击事件，添加弹出动画。
