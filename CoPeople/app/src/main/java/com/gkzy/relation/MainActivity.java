@@ -1,9 +1,10 @@
 package com.gkzy.relation;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         peopleView = findViewById(R.id.layout_cricle_people);
+        peopleView.setmViewClick(new CirclePeopleView.OnViewClick() {
+            @Override
+            public void onClick(CoPersonBean personBean) {
+                Toast.makeText(MainActivity.this,"您点击了："+personBean.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 }
