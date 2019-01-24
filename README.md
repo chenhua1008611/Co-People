@@ -31,5 +31,31 @@
     peopleView.invalidate();
     
     
+ 4.添加了view的点击事件，通过手势判断。原理：
+ 每个圆的Cx,Cy,r都能获取到，然后通过已知数据计算RectF的
+  left,  top,  right,  bottom
+   /**
+     * Create a new rectangle with the specified coordinates. Note: no range
+     * checking is performed, so the caller must ensure that left <= right and
+     * top <= bottom.
+     *
+     * @param left   The X coordinate of the left side of the rectangle
+     * @param top    The Y coordinate of the top of the rectangle
+     * @param right  The X coordinate of the right side of the rectangle
+     * @param bottom The Y coordinate of the bottom of the rectangle
+     */
+    public RectF(float left, float top, float right, float bottom) {
+        this.left = left;
+        this.top = top;
+        this.right = right;
+        this.bottom = bottom;
+    }
+    
+    得到RectF后判断contains(x,y)来获得点击的位置
+    
+    
 ## 后续功能
-添加手势控制（手势控制放大缩小），添加点击事件，添加弹出动画。
+添加手势控制（手势控制放大缩小）
+## 目前还存在的问题
+文字中心对齐圆心；
+数据量大的情况下会有重叠现象；
