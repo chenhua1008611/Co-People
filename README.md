@@ -5,13 +5,16 @@
 
 ## 预览图
 
+
 设计图
 ![avatar](https://github.com/chenhua1008611/Co-People/blob/master/CoPeople/images/1234.png)
+
 
 ## 绘制思路
 这里使用了中学解析几何知识   XPoint = OPointX = OPointX*cosθ； YPoint = OPointY = OPointY*sinθ；
 <pre class=”brush: java; gutter: true;”>                canvas.drawText(lists.get(i).getName(), XPoint + (float) Math.cos(pere * i + 5) * radius[i % radius.length] - 30, YPoint + (float) Math.sin(pere * i + 5) * radius[i % radius.length] + 35, paint);
 </pre>
+
 
 ## 用法
  ```
@@ -52,10 +55,13 @@
     }
     
     得到RectF后判断contains(x,y)来获得点击的位置
-    
-    
-## 后续功能
-添加手势控制（手势控制放大缩小）
-## 目前还存在的问题
-文字中心对齐圆心；
-数据量大的情况下会有重叠现象；
+  
+  ```
+  
+ ## 后续功能
+  添加手势控制（手势控制放大缩小）
+
+## 目前还存在的问题 
+  文字中心对齐圆心
+  数据量大的情况下会有重叠现象
+
