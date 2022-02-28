@@ -33,6 +33,7 @@ public class CirclePeopleView extends View {
     private int[] radius = null;
     private List<CoPersonBean> lists = new ArrayList<>();
     private static final int DISTANCE_CIRCLE = 180;
+    private OnViewClick mViewClick;
 
     public CirclePeopleView(Context context) {
         super(context);
@@ -51,7 +52,12 @@ public class CirclePeopleView extends View {
         radius = new int[lists.size()];
         for (int i = 0; i < lists.size(); i++) {
             Random r = new Random();
-            radius[i] = r.nextInt(160) + DISTANCE_CIRCLE;
+            //radius[i] = r.nextInt(160) + DISTANCE_CIRCLE;
+            if (i % 2 == 0) {
+                radius[i] = r.nextInt(160) + DISTANCE_CIRCLE;
+            } else {
+                radius[i] = r.nextInt(160) + DISTANCE_CIRCLE - 50;
+            }
         }
     }
 
@@ -75,6 +81,7 @@ public class CirclePeopleView extends View {
         int count = lists.size();
         if (lists != null && count > 0) {
             double pere = Math.PI * 2 / count;
+            CoPersonBean coPersonBean = null;
             for (int i = 0; i < count; i++) {
                 paint.setColor(Color.parseColor(colors[i % colors.length]));
                 paint.setStrokeWidth(dip2px(mContext, 2));
@@ -96,6 +103,45 @@ public class CirclePeopleView extends View {
             }
         }
 
+    }
+    
+    public void setonViewClick(OnViewClick mViewClick) {
+        this.mViewClick = mViewClick;
+    }
+
+    public interface OnViewClick {
+        void onClick(CoPersonBean personBean);
+    }
+    
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                for (int i = 0; i < lists.size(); i++) {
+                    if (lists.get(i).getRectF().contains(x, y)) {
+                        int mx = (int) event.getX();
+                        int my = (int) event.getY();
+
+                        invalidate();
+                        break;
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                for (int i = 0; i < lists.size(); i++) {
+                    if (lists.get(i).getRectF().contains(x, y)) {
+                        mViewClick.onClick(lists.get(i));
+                        break;
+                    }
+                }
+                break;
+        }
+        return true;
     }
 
     public static int dip2px(Context context, float dpValue) {
